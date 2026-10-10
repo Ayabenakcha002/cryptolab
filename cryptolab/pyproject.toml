@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cryptolab"
+version = "0.1.0"
+description = "Educational cryptography library: SHA-256, HMAC, AES (CBC/CTR/GCM) and RSA (OAEP, PKCS#1 signatures) implemented from scratch in pure Python."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Aya Benakcha" }]
+keywords = ["cryptography", "aes", "rsa", "sha256", "education", "security", "python"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Security :: Cryptography",
+    "Intended Audience :: Education",
+]
+dependencies = []
+
+[project.optional-dependencies]
+# "cryptography" is used ONLY by the test-suite, to cross-check our results.
+dev = ["pytest>=7", "cryptography>=41"]
+
+[project.scripts]
+cryptolab = "cryptolab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
